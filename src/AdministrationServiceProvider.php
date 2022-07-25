@@ -66,7 +66,6 @@ class AdministrationServiceProvider extends ServiceProvider
                 
                 $menu = Menu::roots()->get();
 
-
                 $html = null;
 
                 foreach ($menu as $root) {
@@ -167,7 +166,5 @@ class AdministrationServiceProvider extends ServiceProvider
             View::share('menux', $html);
         });
     }
-
-
 }
 
