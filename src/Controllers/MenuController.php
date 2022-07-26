@@ -23,26 +23,6 @@ class MenuController extends Controller
 
         $roots = Menu::roots()->get()->pluck('title', 'id');
         return view('Administration::menu.index', compact('roots'));
-        $perms = collect([5, 7]);
-        $perms2 = collect([8, 9]);
-
-        $root = Menu::create(['title' => 'Administration', 'permissions' => $perms->merge($perms2)]);
-        $child1 = $root->children()->create(['title' => 'Permissions', 'permissions' => $perms, 'url' => 'permissions.index']);
-        $child2 = $root->children()->create(['title' => 'Users', 'permissions' => $perms2, 'url' => 'users.index']);
-
-        $root = Menu::create(['title' => 'REFDN', 'permissions' => $perms->merge($perms2)]);
-        dd(1);
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -53,7 +33,6 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-
         $isParent = (!empty($request->isParent)) ? $request->isParent : false;
         if ($isParent) {
             $root = Menu::firstOrCreate(['title' => $request->title]);
@@ -90,28 +69,6 @@ class MenuController extends Controller
             });
             return $this->sendResponse([], 'Menu Created Successfully');
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Menu $menu
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Menu $menu)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Menu $menu
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Menu $menu)
-    {
-        //
     }
 
     /**
@@ -243,6 +200,5 @@ class MenuController extends Controller
         ];
 
         return json_encode($json_data);
-
     }
 }

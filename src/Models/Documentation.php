@@ -5,7 +5,6 @@ namespace Administration\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
-// use Spatie\Activitylog\Traits\LogsActivity;
 use Administration\Traits\ActivityLogOptionsTrait;
 use Baum\NestedSet\Node as WorksAsNestedSet;
 use Spatie\Permission\Traits\HasPermissions;
