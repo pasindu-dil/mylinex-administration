@@ -21,14 +21,14 @@ class CreatePermissionTables extends Migration
             $table->bigIncrements('id');
             $table->integer('menu_id')->nullable();
             $table->string('name');
-            $table->string('guard_name');
+            $table->string('guard_name')->nullable();
             $table->timestamps();
         });
 
         Schema::create($tableNames['roles'], function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('guard_name');
+            $table->string('guard_name')->nullable();
             $table->timestamps();
         });
 

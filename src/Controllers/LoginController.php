@@ -66,4 +66,10 @@ class LoginController extends Controller
             ?: redirect()->intended($this->redirectPath());
     }
 
+    protected function logout()
+    {
+        Session::flush();
+        return redirect('/');
+    }
+
 }

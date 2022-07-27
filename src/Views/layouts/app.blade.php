@@ -45,7 +45,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapseAlt">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown show-on-hover active">
-                        <a class="nav-link " href="/" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link " href="/home" aria-haspopup="true" aria-expanded="false">
                             Dashboard
                         </a>
                     </li>
@@ -79,10 +79,10 @@
                            href="{{route('users.profile',\Illuminate\Support\Facades\Auth::id())}}"><i
                                 class="dropdown-icon zmdi zmdi-account"></i><span>Profile</span></a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        <a class="dropdown-item" href="{{ route('log-out') }}"
                            onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"><i
                                     class="dropdown-icon zmdi zmdi-power"></i><span>Log out</span></a>
-                        <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        <form id="frm-logout" action="{{ route('log-out') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
                     </div>
