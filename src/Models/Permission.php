@@ -5,10 +5,11 @@ namespace Administration\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Administration\Traits\ActivityLogOptionsTrait;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Permission extends Model
 {
-    use ActivityLogOptionsTrait;
+    use ActivityLogOptionsTrait, LogsActivity;
     protected static $logName = 'permissions';
     protected static $logAttributes = ['*'];
 

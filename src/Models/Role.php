@@ -5,10 +5,11 @@ namespace Administration\Models;
 use Illuminate\Database\Eloquent\Model;
 use Administration\Traits\ActivityLogOptionsTrait;
 use Spatie\Permission\Traits\HasPermissions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Role extends Model
 {
-    use ActivityLogOptionsTrait,HasPermissions;
+    use ActivityLogOptionsTrait,HasPermissions, LogsActivity;
     protected static $logName = 'permissions';
     protected static $logAttributes = ['*'];
 

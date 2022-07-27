@@ -6,10 +6,11 @@ use Baum\NestedSet\Node as WorksAsNestedSet;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Menu extends Model
 {
-    use WorksAsNestedSet,SoftDeletes;
+    use WorksAsNestedSet,SoftDeletes, LogsActivity;
     protected $table = 'menu';
     protected $fillable = ['title', 'url', 'description', 'permissions', 'parent_id', 'left', 'right', 'depth'];
     protected $parentColumnName = 'parent_id';

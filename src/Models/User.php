@@ -11,10 +11,11 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
 use Spatie\Permission\Traits\HasRoles;
 use Administration\Traits\ActivityLogOptionsTrait;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes, HasRoles, ActivityLogOptionsTrait;
+    use Notifiable, SoftDeletes, HasRoles, ActivityLogOptionsTrait, LogsActivity;
     protected $guard_name = 'web';
     protected static $logName = 'users';
     protected static $logAttributes = ['name', 'email'];

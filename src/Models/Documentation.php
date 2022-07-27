@@ -8,11 +8,12 @@ use Illuminate\Support\Facades\Auth;
 use Administration\Traits\ActivityLogOptionsTrait;
 use Baum\NestedSet\Node as WorksAsNestedSet;
 use Spatie\Permission\Traits\HasPermissions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Documentation extends Model
 {
     //
-    use ActivityLogOptionsTrait, SoftDeletes, WorksAsNestedSet, HasPermissions;
+    use ActivityLogOptionsTrait, SoftDeletes, WorksAsNestedSet, HasPermissions, LogsActivity;
     protected $guard_name = 'web';
     protected static $logName = 'documentation';
     protected static $logAttributes = ['*'];

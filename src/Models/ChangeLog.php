@@ -5,13 +5,13 @@ namespace Administration\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
-// use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Administration\Traits\ActivityLogOptionsTrait;
 
 class ChangeLog extends Model
 {
     //
-    use ActivityLogOptionsTrait, SoftDeletes;
+    use ActivityLogOptionsTrait, SoftDeletes, LogsActivity;
     protected static $logName = 'change_log';
     protected static $logAttributes = ['*'];
     protected $table = 'doc_change_logs';
