@@ -23,7 +23,7 @@ class ActivityLogController extends Controller
             $causers = User::whereId($user_id)->pluck('name', 'id');
         }
         
-        $performed_on = ActivityLog::PerformedOnList()->get()->pluck('subject_type', 'subject_type');
+        $performed_on = ActivityLog::PerformedOnList()->pluck('subject_type', 'subject_type');
         
         return view('Administration::activity-logs.index', compact('causers', 'performed_on')) ;
     }
