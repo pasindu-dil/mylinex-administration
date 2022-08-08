@@ -22,7 +22,6 @@ Route::namespace('Administration\Controllers')->group(function () {
         Route::get('/roles/render/form', 'RoleController@renderForm')->name('roles.form');
 
         Route::resource('users', 'UserController');
-//        Route::resource('users', 'UserController')->middleware('role_or_permission:Super Admin|Admin|users show|users index|users edit|users create|users delete');
         Route::get('/users/table/data', 'UserController@tableData')->name('users.data');
         Route::get('/users/unlock/{user}', 'UserController@unlock')->name('users.unlock');
         Route::put('/users/{user}/reset', 'UserController@resetPassword')->name('users.reset');

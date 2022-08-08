@@ -23,7 +23,6 @@ class PermissionInRoleMiddleware
             throw UnauthorizedException::notLoggedIn();
         }
 
-
         $menu = Menu::whereUrl($request->route()->getName())->first();
         if (!empty($menu)) {
             $permissions = $menu->permissions()->get()->pluck('name');

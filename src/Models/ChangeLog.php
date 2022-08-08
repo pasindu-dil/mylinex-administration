@@ -10,7 +10,6 @@ use Administration\Traits\ActivityLogOptionsTrait;
 
 class ChangeLog extends Model
 {
-    //
     use ActivityLogOptionsTrait, SoftDeletes, LogsActivity;
     protected static $logName = 'change_log';
     protected static $logAttributes = ['*'];

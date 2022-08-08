@@ -15,16 +15,6 @@ use Illuminate\Support\Facades\Request;
 class LogoutAttempt
 {
     /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-
-    }
-
-    /**
      * Handle the event.
      *
      * @param  Login  $event

@@ -254,7 +254,7 @@
 @push('scripts')
     @include('Administration::layouts.includes.scripts.fonts')
     @include('Administration::layouts.includes.scripts.charts')
-    @include('Administration::layouts.includes.scripts.interface') -->
+    @include('Administration::layouts.includes.scripts.interface')
     <script src="{{asset('js/dashboard2-data.js')}}"></script>
     <script>
         /*Counter Animation*/
