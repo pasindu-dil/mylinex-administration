@@ -24,7 +24,7 @@
 
     <!-- Custom CSS -->
     <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css">
-    <!-- <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"> -->
+    <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
     
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
 
@@ -49,7 +49,7 @@
                             Dashboard
                         </a>
                     </li>
-                    {!! $menux !!}
+                    {!! $menu !!}
                     <div id="menu"></div>
                 </ul>
             </div>
