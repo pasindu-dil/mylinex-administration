@@ -1,4 +1,4 @@
-@extends('Administration::layouts.app')
+@extends('layouts.app')
 @section('title','Activity Log')
 @section('content')
     <div class="hk-pg-header">

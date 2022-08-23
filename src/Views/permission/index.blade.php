@@ -1,4 +1,4 @@
-@extends('Administration::layouts.app')
+@extends('layouts.app')
 @section('title','Permissions')
 @section('content')
     {{--    <permission-index-component></permission-index-component>--}}
