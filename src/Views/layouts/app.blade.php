@@ -49,7 +49,7 @@
                             Dashboard
                         </a>
                     </li>
-                    {!! $menux !!}
+                    {!! $menu !!}
                     <div id="menu"></div>
                 </ul>
             </div>
