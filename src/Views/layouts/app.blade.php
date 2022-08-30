@@ -45,7 +45,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapseAlt">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown show-on-hover active">
-                        <a class="nav-link " href="/" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link " href="/home" aria-haspopup="true" aria-expanded="false">
                             Dashboard
                         </a>
                     </li>
