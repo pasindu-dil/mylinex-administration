@@ -45,7 +45,8 @@ class AdministrationServiceProvider extends ServiceProvider
             __DIR__ . '/Assets/css' => public_path('css'),
             __DIR__ . '/Assets/images' => public_path('images'),
             __DIR__ . '/Assets/fonts' => public_path('fonts'),
-            __DIR__ . '/Views' => resource_path('views'),
+            __DIR__ . '/Assets/plugins' => public_path('plugins'),
+            __DIR__ . '/Database/seeds' => database_path('seeds'),
         ], 'public');
 
         View::composer('*', function ($view) {

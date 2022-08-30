@@ -1,7 +1,5 @@
 <?php
 
-namespace Administration\Seeds;
-
 use Administration\Models\Permission;
 use Illuminate\Database\Seeder;
 
