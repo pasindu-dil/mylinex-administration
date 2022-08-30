@@ -10,7 +10,7 @@ use Administration\Traits\ActivityLogOptionsTrait;
 
 class Menu extends Model
 {
-    use WorksAsNestedSet,SoftDeletes, ActivityLogOptionsTrait;
+    use WorksAsNestedSet,SoftDeletes, LogsActivity, ActivityLogOptionsTrait;
     protected $table = 'menu';
     protected $fillable = ['title', 'url', 'description', 'permissions', 'parent_id', 'left', 'right', 'depth'];
     protected $parentColumnName = 'parent_id';
