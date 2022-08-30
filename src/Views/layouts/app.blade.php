@@ -20,7 +20,7 @@
     <link href="{{asset('plugins/jquery-toast-plugin/jquery.toast.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('plugins/sweetalert2/sweetalert2.css')}}" rel="stylesheet" type="text/css">
 
-    @stack('styles')
+    <!-- @stack('styles') -->
 
     <!-- Custom CSS -->
     <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css">
