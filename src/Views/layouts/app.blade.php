@@ -123,11 +123,7 @@
 </div>
 
 <script src="{{asset('js/app.js')}}"></script>
-<<<<<<< HEAD
-=======
 <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
->>>>>>> 65c6a91f11471f28269f5d988d48d2e21f7743f7
 <script src="{{asset('plugins/popper/popper.js')}}"></script>
 
 <!-- Notification JS -->
