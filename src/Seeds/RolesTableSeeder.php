@@ -13,8 +13,12 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        Role::firstOrCreate(['id'=>1],['name'=>'Super Admin','guard_name'=>'web']);
-        Role::firstOrCreate(['id'=>2],['name'=>'Admin','guard_name'=>'web']);
+        $roles =[
+            ['id'=>1,'name'=>'Super Admin','guard_name'=>'web'],
+            ['id'=>2,'name'=>'Admin','guard_name'=>'web'],
+        ];
+
+        Role::insert($roles);
 
         $permissions =['users create','users edit','users delete','reset password'];
 

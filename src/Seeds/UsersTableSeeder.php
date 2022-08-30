@@ -1,5 +1,4 @@
 <?php
-
 namespace Administration\Seeds;
 
 use Administration\Models\User;
@@ -15,8 +14,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::firstOrCreate(['id' => 1], ['name' => 'Super Admin', 'email' => 'super@mylinex.com', 'password' => Hash::make('super@mylinex.com')]);
-        User::firstOrCreate(['id' => 2], ['name' => 'System Admin', 'email' => 'admin@mylinex.com', 'password' => Hash::make('admin@mylinex.com')]);
+        $users =[
+            ['id'=>1,'name'=>'Super Admin','email'=>'super@mylinex.com','password'=>Hash::make('super@mylinex.com')],
+            ['id'=>2,'name'=>'System Admin','email'=>'admin@mylinex.com','password'=>Hash::make('admin@mylinex.com')],
+        ];
+
+        User::insert($users);
 
         User::find(1)->assignRole('Super Admin');
         User::find(2)->assignRole('Admin');

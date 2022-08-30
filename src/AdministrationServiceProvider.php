@@ -45,8 +45,7 @@ class AdministrationServiceProvider extends ServiceProvider
             __DIR__ . '/Assets/css' => public_path('css'),
             __DIR__ . '/Assets/images' => public_path('images'),
             __DIR__ . '/Assets/fonts' => public_path('fonts'),
-            __DIR__ . '/Assets/plugins' => public_path('plugins'),
-            __DIR__ . '/Database/seeds' => database_path('seeders'),
+            __DIR__ . '/Views' => resource_path('views'),
         ], 'public');
 
         View::composer('*', function ($view) {
@@ -56,15 +55,17 @@ class AdministrationServiceProvider extends ServiceProvider
                 $user = User::find($user_id);
                 $menu_ids = [];
                 $current_route = Request::route()->getName();
-                
+
                 if ($user->hasRole(['Super Admin'])) {
                     $menu_ids = Menu::with('parentMenu')->get()->pluck('id');
                 } else {
                     $menu_id = $user->getAllPermissions()->pluck('menu_id');
                     $menu_ids = $menu_id->unique();
                 }
-                
+
+
                 $menu = Menu::roots()->get();
+
 
                 $html = null;
 
@@ -163,8 +164,7 @@ class AdministrationServiceProvider extends ServiceProvider
 
                 }
             }
-            View::share('menux', $html);
+            View::share('menu', $html);
         });
     }
 }
-

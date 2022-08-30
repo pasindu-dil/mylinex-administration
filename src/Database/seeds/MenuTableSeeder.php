@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Administration\Database\Seeds;
 
 use Administration\Models\Menu;
 use Administration\Models\Permission;
