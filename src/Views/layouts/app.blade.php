@@ -20,7 +20,7 @@
     <link href="{{asset('plugins/jquery-toast-plugin/jquery.toast.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('plugins/sweetalert2/sweetalert2.css')}}" rel="stylesheet" type="text/css">
 
-    <!-- @stack('styles') -->
+    <!-- <!-- @stack('styles') -->
 
     <!-- Custom CSS -->
     <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css">
@@ -45,7 +45,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapseAlt">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown show-on-hover active">
-                        <a class="nav-link " href="/home" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link " href="/homehome" aria-haspopup="true" aria-expanded="false">
                             Dashboard
                         </a>
                     </li>
@@ -123,6 +123,11 @@
 </div>
 
 <script src="{{asset('js/app.js')}}"></script>
+<<<<<<< HEAD
+=======
+<script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+>>>>>>> 65c6a91f11471f28269f5d988d48d2e21f7743f7
 <script src="{{asset('plugins/popper/popper.js')}}"></script>
 
 <!-- Notification JS -->
