@@ -14,7 +14,7 @@ class AddLoginAttemptsToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('login_attempts')->nullable();
+            $table->integer('login_attempts')->nullable()->default(0);
         });
     }
 
