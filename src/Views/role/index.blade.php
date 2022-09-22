@@ -88,18 +88,10 @@
 
 @endsection
 @push('styles')
-<<<<<<< HEAD
-    @include('Administration::layouts.includes.styles.form')
-=======
->>>>>>> e645ae4508fb2e529e30cb6531e06bcebf1b230c
     <link href="{{asset('plugins/datatables/jquery.dataTables.css')}}" rel="stylesheet" type="text/css"/>
 @endpush
 
 @push('scripts')
-<<<<<<< HEAD
-    @include('Administration::layouts.includes.scripts.form')
-=======
->>>>>>> e645ae4508fb2e529e30cb6531e06bcebf1b230c
     <!-- Data Table JavaScript -->
     <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('js/dataTables-data.js')}}"></script>
@@ -135,27 +127,5 @@
 
         }
     </script>)
-<<<<<<< HEAD
-    <script>
-        $(".input_tags").select2({
-            tags: false,
-            tokenSeparators: [',', ' ']
-        });
-    </script>
-@endpush
-@push('styles')
-    <style>
-        /*.select2-container--default .select2-selection--multiple {*/
-        /*   height: 12px !important;*/
-        /*    min-height: 12px !important;*/
-        /*}*/
-
-        .select2-container--default .select2-selection--single, .select2-container--default .select2-selection--multiple {
-            border: 1px solid #e0e3e4 !important;
-            border-radius: 0 !important;
-        }
-    </style>
-=======
->>>>>>> e645ae4508fb2e529e30cb6531e06bcebf1b230c
 @endpush
 
