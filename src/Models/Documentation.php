@@ -2,18 +2,18 @@
 
 namespace Administration\Models;
 
+use Administration\Traits\ActivityLogOptionsTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
-use Administration\Traits\ActivityLogOptionsTrait;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Baum\NestedSet\Node as WorksAsNestedSet;
 use Spatie\Permission\Traits\HasPermissions;
-use Spatie\Activitylog\Traits\LogsActivity;
 
 class Documentation extends Model
 {
     //
-    use ActivityLogOptionsTrait, SoftDeletes, WorksAsNestedSet, HasPermissions, LogsActivity;
+    use LogsActivity, SoftDeletes, WorksAsNestedSet, HasPermissions, ActivityLogOptionsTrait;
     protected $guard_name = 'web';
     protected static $logName = 'documentation';
     protected static $logAttributes = ['*'];

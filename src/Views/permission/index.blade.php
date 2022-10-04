@@ -1,4 +1,4 @@
-@extends('Administration::layouts.app')
+@extends('layouts.app')
 @section('title','Permissions')
 @section('content')
     {{--    <permission-index-component></permission-index-component>--}}
@@ -87,13 +87,11 @@
 
 @endsection
 @push('styles')
-
     @include('Administration::layouts.includes.styles.form')
     <link href="{{asset('plugins/datatables/jquery.dataTables.css')}}" rel="stylesheet" type="text/css"/>
 @endpush
 
 @push('scripts')
-
     @include('Administration::layouts.includes.scripts.form')
     <!-- Data Table JavaScript -->
     <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
