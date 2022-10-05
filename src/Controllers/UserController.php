@@ -25,12 +25,6 @@ class UserController extends Controller
     {
         $roles = Role::all()->pluck('name', 'name');
         $type = env('APP_TYPE');
-        $menu = Menu::query();
-        if ($type=='ALL') {
-            $menu->where('type','=','SMSFW')->orWhere('type','=','VOICEFW');
-        }else{
-            $menu->where('type','=',$type);
-        }
         $menu = [];
 
         return view('Administration::users.index',compact('roles','menu'));
@@ -67,6 +61,8 @@ class UserController extends Controller
             if ($exist_user->trashed()) {
                 $exist_user->name = $request->name;
                 $exist_user->updated_by = Auth::user()->id;
+                $exist_user->landing_page = $request->landing_page;
+                $exist_user->is_api = $is_api;
                 $exist_user->save();
                 $exist_user->syncRoles($request->role);
                 $exist_user->restore();
@@ -135,6 +131,7 @@ class UserController extends Controller
         }
 
         $user->updated_by = $request->updated_by;
+
         $user->save();
         $user->syncRoles($request->role);
 
@@ -171,7 +168,7 @@ class UserController extends Controller
 
         if (is_null($search) || empty($search)) {
             $users = $users->get();
-            $user_count = User::all()->count();
+            $user_count = Role::count();
         } else {
             $users = $users->searchData($search)->get();
             $user_count = $users->count();
@@ -188,7 +185,7 @@ class UserController extends Controller
         $reset_attempts = ($user->can('reset attempts')) ? 1 : 0;
         foreach ($users as $key => $user) {
             $attempts_btn = null;
-            
+
             if ($reset_attempts) {
                 $last_login = new Carbon(($user->last_login) ? $user->last_login : $user->created_at);
                 $disabledUser = Carbon::now()->diffInDays($last_login) >= config('auth.user_expires_days');
@@ -216,6 +213,8 @@ class UserController extends Controller
                 $user->name,
                 $user->email,
                 $user->getRoleNames(),
+                $menu_title,
+                $api_user,
                 $edit_btn . $delete_btn . $reset_btn . $attempts_btn
             );
             $i++;
@@ -244,7 +243,9 @@ class UserController extends Controller
         $newPassword = $request->password;
         $user->password = Hash::make($newPassword);
         $user->password_changed_at = Carbon::now()->toDateTimeString();
+
         $user->last_login = Carbon::now();
+
         $user->save();
 
         $pc = new PasswordPolicyService($user);
@@ -256,7 +257,9 @@ class UserController extends Controller
     public function unlock(Request $request, User $user)
     {
         $user->login_attempts = 0;
+
         $user->last_login = Carbon::now();
+
         $user->save();
         return $this->sendResponse($user, 'User Unlocked Successfully');
 

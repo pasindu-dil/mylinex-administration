@@ -21,6 +21,8 @@
                                     <th>User Name</th>
                                     <th>Email</th>
                                     <th>Role</th>
+                                    <th>Landing Page</th>
+                                    <th>API User</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -199,27 +201,21 @@
             }
         });
 
-        // $(".landing_page").select2();
+        
 
         function edit(role) {
             let id = role.dataset.id;
             let name = role.dataset.name;
             let email = role.dataset.email;
             let roles = role.dataset.roles;
-            // let landing_page = role.dataset.landing_page;
-            // let is_api = (role.dataset.is_api==1)?true:false;
             $("#userEditForm").find('.name').val(name);
             $("#userEditForm").find('.email').val(email);
 
-            // $("#userEditForm").find('.is_api').prop( "checked", is_api );
 
             let roleName = roles.replace('["', '');
             roleName = roleName.replace('"]', '');
 
             $("#userEditForm").find('.role').val(roleName);
-
-            // $("#userEditForm").find('.landing_page').val(landing_page);
-            // $("#userEditForm").find('.landing_page').trigger('change')
 
 
             $("#userEditForm").attr('action', '/users/' + id);

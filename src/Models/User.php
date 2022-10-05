@@ -65,9 +65,6 @@ class User extends Authenticatable
 
    public function hasAnyAccess($permission = [], $isId = false)
    {
-//        if (!Auth::user()) {
-//            abort(403);
-//        }
 
        $user = User::with('roles')->find($this->id);
        $roles = $user->roles;
@@ -87,9 +84,6 @@ class User extends Authenticatable
        } else {
            $rolePermissions = Role::whereName($roles[0]->name)->first()->permissions->pluck('name')->toArray();
        }
-//dd($permission->toArray());
-//dd(array_intersect($permission->toArray(), $rolePermissions));
-//dd($rolePermissions);
        $intersects = array_intersect($permissions, $rolePermissions);
        return !empty($intersects) ? true : false;
    }
