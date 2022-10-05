@@ -25,14 +25,7 @@ class UserController extends Controller
     {
         $roles = Role::all()->pluck('name', 'name');
         $type = env('APP_TYPE');
-        $menu = Menu::query();
-        if ($type=='ALL') {
-            $menu->where('type','=','SMSFW')->orWhere('type','=','VOICEFW');
-        }else{
-            $menu->where('type','=',$type);
-        }
-
-        $menu = $menu->where('url','<>',null)->get()->pluck('title','id');
+        $menu = [];
 
         return view('Administration::users.index',compact('roles','menu'));
     }
@@ -56,7 +49,6 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        $is_api = $request->is_api == 'on'?1:0;
         if (User::whereName($request->name)->withTrashed()->count() > 0){
             return $this->sendError('User name already exists!');
         }
@@ -82,7 +74,7 @@ class UserController extends Controller
             }
             return $this->sendError('Error', 'User already exits!');
         } else {
-            $user = User::create(['name' => $request['name'], 'email' => $request['email'] ,'landing_page' => $request['landing_page'], 'password' => Hash::make($request['password']), 'created_by' => Auth::user()->id, 'is_api' => $is_api]);
+            $user = User::create(['name' => $request['name'], 'email' => $request['email'] , 'password' => Hash::make($request['password']), 'created_by' => Auth::user()->id]);
 
             $pc = new PasswordPolicyService($user);
             $pc->passwordChangeProcess($request['password']);
@@ -125,7 +117,6 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $is_api = $request->is_api == 'on'?1:0;
         if (User::whereName($request->name)->where('id','!=',$user->id)->withTrashed()->count() > 0){
             return $this->sendError('User name already exists!');
         }
@@ -140,8 +131,7 @@ class UserController extends Controller
         }
 
         $user->updated_by = $request->updated_by;
-        $user->landing_page = $request->landing_page;
-        $user->is_api = $is_api;
+
         $user->save();
         $user->syncRoles($request->role);
 
@@ -178,7 +168,7 @@ class UserController extends Controller
 
         if (is_null($search) || empty($search)) {
             $users = $users->get();
-            $user_count = User::all()->count();
+            $user_count = Role::count();
         } else {
             $users = $users->searchData($search)->get();
             $user_count = $users->count();
@@ -196,8 +186,6 @@ class UserController extends Controller
         foreach ($users as $key => $user) {
             $attempts_btn = null;
 
-            $menu_title = (!empty($user->landing_page)) ?Menu::where('id','=',$user->landing_page)->first()->title:'-';
-            
             if ($reset_attempts) {
                 $last_login = new Carbon(($user->last_login) ? $user->last_login : $user->created_at);
                 $disabledUser = Carbon::now()->diffInDays($last_login) >= config('auth.user_expires_days');
@@ -255,7 +243,9 @@ class UserController extends Controller
         $newPassword = $request->password;
         $user->password = Hash::make($newPassword);
         $user->password_changed_at = Carbon::now()->toDateTimeString();
+
         $user->last_login = Carbon::now();
+
         $user->save();
 
         $pc = new PasswordPolicyService($user);
@@ -267,7 +257,9 @@ class UserController extends Controller
     public function unlock(Request $request, User $user)
     {
         $user->login_attempts = 0;
+
         $user->last_login = Carbon::now();
+
         $user->save();
         return $this->sendResponse($user, 'User Unlocked Successfully');
 

@@ -27,16 +27,6 @@
                        required>
             </div>
         </div>
-        @can('landing page assign')
-            <div class="row">
-                <div class="col-md-2 text-right mt-2">
-                    <label>Landing Page</label>
-                </div>
-                <div class="col-md-10">
-                    {!! Form::select('landing_page', $menu , null , ['class' => 'form-control landing_page']) !!}
-                </div>
-            </div>
-        @endcan
     @endif
     @if (!isset($edit))
         <div class="row">
@@ -58,14 +48,6 @@
             </div>
         </div>
     @endif
-        <div class="row">
-            <div class="col-md-2 text-right mt-2">
-                <label>API User</label>
-            </div>
-            <div class="col-md-1">
-                <input type="checkbox" name='is_api' class="form-control is_api">
-            </div>
-        </div>
 
 
 </div>

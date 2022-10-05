@@ -98,123 +98,7 @@
     <script src="{{asset('js/dataTables-data.js')}}"></script>
 
     <script>
-        initCheckBox();
-
-        function initCheckBox() {
-            $(".superParentCheckBox").click(
-                function () {
-                    $(this).parents('.super').find('.parentCheckBox').prop('checked', this.checked);
-                    $(this).parents('.super').find('.secondParentCheckBox').prop('checked', this.checked);
-                    $(this).parents('.super').find('.childCheckBox').prop('checked', this.checked);
-                }
-            );
-
-            $(".parentCheckBox").click(
-                function () {
-                    $(this).parents('.main-parent').find('.childCheckBox').prop('checked', this.checked);
-
-                    if ($(this).parents('.super').find('.superParentCheckBox').prop('checked') == true && this.checked == false)
-                        $(this).parents('.super').find('.superParentCheckBox').prop('checked', false);
-
-                    if ($(this).parents('.sub-super').find('.secondParentCheckBox').prop('checked') == true && this.checked == false)
-                        $(this).parents('.sub-super').find('.secondParentCheckBox').prop('checked', false);
-
-
-                    if (this.checked == true) {
-                        var superFlag = true;
-                        var secondParentFlag = true;
-                        $(this).parents('.super').find('.childCheckBox').each(
-                            function () {
-                                if (this.checked == false)
-                                    superFlag = false;
-                            }
-                        );
-                        $(this).parents('.sub-super').find('.childCheckBox').each(
-                            function () {
-                                if (this.checked == false)
-                                    secondParentFlag = false;
-                            }
-                        );
-                        $(this).parents('.sub-super').find('.secondParentCheckBox').prop('checked', secondParentFlag);
-                        $(this).parents('.super').find('.superParentCheckBox').prop('checked', superFlag);
-                    }
-                }
-            );
-
-            $(".secondParentCheckBox").click(
-                function () {
-                    $(this).parents(".sub-super").find('.main-parent').find('.parentCheckBox').prop('checked', this.checked);
-                    $(this).parents(".sub-super").find('.childCheckBox').prop('checked', this.checked);
-
-                    if ($(this).parents('.super').find('.superParentCheckBox').prop('checked') == true && this.checked == false)
-                        $(this).parents('.super').find('.superParentCheckBox').prop('checked', false);
-
-                    if ($(this).parents(".sub-super").find('.main-parent').find('.parentCheckBox').prop('checked') == true && this.checked == false)
-                        $(this).parents(".sub-super").find('.main-parent').find('.parentCheckBox').prop('checked', false);
-
-
-                    if (this.checked == true) {
-                        var superFlag = true;
-                        var flag = true;
-                        $(this).parents('.super').find('.childCheckBox').each(
-                            function () {
-                                if (this.checked == false)
-                                    superFlag = false;
-                            }
-                        );
-                        $(this).parents(".sub-super").find('.main-parent').find('.childCheckBox').each(
-                            function () {
-                                if (this.checked == false)
-                                    flag = false;
-                            }
-                        );
-                        $(this).parents(".sub-super").find('.main-parent').find('.parentCheckBox').prop('checked', flag);
-                        $(this).parents('.super').find('.superParentCheckBox').prop('checked', superFlag);
-                    }
-                }
-            );
-
-            //clicking the last unchecked or checked checkbox should check or uncheck the parent checkbox
-            $('.childCheckBox').click(
-                function () {
-                    if ($(this).parents('.super').find('.superParentCheckBox').prop('checked') == true && this.checked == false)
-                        $(this).parents('.super').find('.superParentCheckBox').prop('checked', false);
-
-                    if ($(this).parents('.main-parent').find('.parentCheckBox').prop('checked') == true && this.checked == false)
-                        $(this).parents('.main-parent').find('.parentCheckBox').prop('checked', false);
-
-                    if ($(this).parents('.sub-super').find('.secondParentCheckBox').prop('checked') == true && this.checked == false)
-                        $(this).parents('.sub-super').find('.secondParentCheckBox').prop('checked', false);
-
-                    if (this.checked == true) {
-                        var flag = true;
-                        var superFlag = true;
-                        var secondParentFlag = true;
-                        $(this).parents('.super').find('.childCheckBox').each(
-                            function () {
-                                if (this.checked == false)
-                                    superFlag = false;
-                            }
-                        );
-                        $(this).parents('.main-parent').find('.childCheckBox').each(
-                            function () {
-                                if (this.checked == false)
-                                    flag = false;
-                            }
-                        );
-                        $(this).parents('.sub-super').find('.childCheckBox').each(
-                            function () {
-                                if (this.checked == false)
-                                    secondParentFlag = false;
-                            }
-                        );
-                        $(this).parents('.sub-super').find('.secondParentCheckBox').prop('checked', secondParentFlag);
-                        $(this).parents('.main-parent').find('.parentCheckBox').prop('checked', flag);
-                        $(this).parents('.super').find('.superParentCheckBox').prop('checked', superFlag);
-                    }
-                }
-            );
-        }
+        
 
         DataTableOption.initDataTable('roleTable', 'roles/table/data');
         FormOptions.initValidation('roleCreateForm');
@@ -225,30 +109,17 @@
             let name = role.dataset.name;
             let permissions = role.dataset.permissions;
             $("#roleEditForm").find('#txtName').val(name);
-
+            console.log(role.dataset.permissions);
             var values = "Test,Prof,Off";
             $.each(values.split(","), function (i, e) {
                 $("#strings option[value='" + e + "']").prop("selected", true);
             });
 
             $("#roleEditForm").find('.input_tags').val(JSON.parse(permissions));
-            $("#roleEditForm").find('.input_tags').trigger('change');
+            // $("#roleEditForm").find('.input_tags').trigger('change');
 
             $("#roleEditForm").attr('action', '/roles/' + id);
             ModalOptions.toggleModal('roleEditModal');
-            $.ajax({
-                url: '/roles/render/form',
-                type: 'GET',
-                data:{id:id},
-                success: function success(result) {
-                    $('#permissionForm').empty();
-                    $('#permissionForm').append(result);
-                    initCheckBox();
-                },
-                error: function error(XMLHttpRequest, textStatus, errorThrown) {
-
-                }
-            })
         }
     </script>)
     <script>

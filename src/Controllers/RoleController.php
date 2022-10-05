@@ -127,7 +127,7 @@ class RoleController extends Controller
             $roles = $roles->searchData($search)->get();
             $roles_count = $roles->count();
         }
-
+        
         $data[][] = array();
         $i = 0;
         $edit_btn = null;

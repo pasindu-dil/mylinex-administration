@@ -87,12 +87,12 @@
 
 @endsection
 @push('styles')
-    @include('layouts.includes.styles.form')
+    @include('Administration::layouts.includes.styles.form')
     <link href="{{asset('plugins/datatables/jquery.dataTables.css')}}" rel="stylesheet" type="text/css"/>
 @endpush
 
 @push('scripts')
-    @include('layouts.includes.scripts.form')
+    @include('Administration::layouts.includes.scripts.form')
     <!-- Data Table JavaScript -->
     <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('js/dataTables-data.js')}}"></script>
