@@ -6,7 +6,7 @@
 
 Require the mylinex/administration package in your composer.json and update your dependencies:
 
-    composer require mylinex/administration
+    composer require mylinex/administration:4.2.0
 
 ## Configuration
 
