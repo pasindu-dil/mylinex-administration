@@ -248,7 +248,7 @@
                                 $('#userTable').DataTable().ajax.reload();
                                 Swal.fire(
                                     'Unlocked!',
-                                    'Your file has been deleted.',
+                                    'User has been unlocked.',
                                     'success'
                                 )
                             } else {
